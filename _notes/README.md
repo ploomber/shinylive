@@ -21,8 +21,14 @@ I passed `showHeaderBar: false` to `app/index.html` but doesn't work because of 
 component works.
 
 
-## Development
+## Build
 
 ```sh
-make serve-r
+make all
+```
+
+Then grab `_shinylive/r/` or `site/` (unsure what's the difference)
+
+```sh
+python -m http.server --directory _shinylive/r
 ```
