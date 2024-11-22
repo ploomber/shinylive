@@ -20,8 +20,10 @@
         appRoot,
         "viewer",
         {
+          showHeaderBar: false,
           allowCodeUrl: true,
-          allowGistUrl: true,
+          allowGistUrl: false,
+          // a bug is triggered if we disable this
           allowExampleUrl: true,
           setWindowTitle: {
             prefix: "",
