@@ -37,7 +37,7 @@ const terminalInterface: TerminalInterface = (() => {
   let _exec = async (x: string) => console.log("preload exec:" + x);
   let _echo = async (x: string) => console.log("preload echo:" + x);
   let _error = async (x: string) => console.error("preload error:" + x);
-  let _clear = () => {};
+  let _clear = () => { };
 
   return {
     exec: async (x: string): Promise<void> => _exec(x),
@@ -116,11 +116,11 @@ type AppOptions = {
   // window, with the prefix prepended. If the Viewer iframe's title is empty,
   // then the default title will be used instead.
   setWindowTitle?:
-    | {
-        prefix: string;
-        defaultTitle: string;
-      }
-    | false;
+  | {
+    prefix: string;
+    defaultTitle: string;
+  }
+  | false;
 };
 
 export type ProxyHandle = PyodideProxyHandle | WebRProxyHandle;
@@ -377,8 +377,8 @@ export function App({
       openEditorWindowFromViewer: () => {
         window.open(
           editorUrlPrefix(appEngine) +
-            "#code=" +
-            fileContentsToUrlString(startFiles),
+          "#code=" +
+          fileContentsToUrlString(startFiles),
           "_blank",
         );
       },
@@ -746,7 +746,7 @@ export function runApp(
 
       // Look for "h=0". This value is used only in Viewer-only mode to
       // determine whether or not to hide the header bar.
-      opts.showHeaderBar = hashParams.get("h") !== "0";
+      // opts.showHeaderBar = hashParams.get("h") !== "0";
     }
 
     // At this point we know that startFiles is a FileContentJson[] or
