@@ -19,3 +19,10 @@ to encode the data.
 
 I passed `showHeaderBar: false` to `app/index.html` but doesn't work because of the `opts.showHeaderBar = hashParams.get("h") !== "0";` line. Removing the
 component works.
+
+
+## Development
+
+```sh
+make serve-r
+```
