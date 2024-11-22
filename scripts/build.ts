@@ -337,7 +337,7 @@ if (serve) {
               // @ts-expect-error: `process.platform` could have many other
               // values, like aix, android, haiku, openbsd, freebsd, etc.
               spawn(op[process.platform][0], [
-                `http://localhost:3000/examples`,
+                `http://localhost:3000/app`,
               ]);
             }
           }, 1000); //open the default browser only if it is not opened yet
