@@ -385,6 +385,24 @@ export function App({
     });
   }, [appMode, startFiles]);
 
+  // Add message listener
+  // TODO: validate the origin of the message
+  React.useEffect(() => {
+    const handleMessage = async (event: MessageEvent) => {
+      if (viewerMethods.ready) {
+        if (event.data.type === 'files:write') {
+          console.log("files:write", event.data.data.files);
+          await viewerMethods.stopApp();
+          await viewerMethods.runApp(event.data.data.files);
+        }
+      }
+    };
+
+    window.addEventListener('message', handleMessage);
+    return () => window.removeEventListener('message', handleMessage);
+    // do we need currentFiles?
+  }, [viewerMethods.ready, currentFiles]);
+
   if (appMode === "examples-editor-terminal-viewer") {
     return (
       <>
