@@ -391,7 +391,6 @@ export function App({
     const handleMessage = async (event: MessageEvent) => {
       if (viewerMethods.ready) {
         if (event.data.type === 'files:write') {
-          console.log("files:write", event.data.data.files);
           await viewerMethods.stopApp();
           await viewerMethods.runApp(event.data.data.files);
         }
