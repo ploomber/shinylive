@@ -274,6 +274,17 @@ export function App({
     },
   );
 
+  const handleError = async (msg: string): Promise<void> => {
+    // Send message to parent window
+    if (window.parent !== window) {
+      window.parent.postMessage({
+        type: 'shiny:error',
+        data: { message: msg }
+      }, '*');  // In production, replace '*' with specific origin
+    }
+  };
+  terminalInterface.set_error_fn(handleError);
+
   const [currentFiles, setCurrentFiles] =
     React.useState<FileContent[]>(startFiles);
   const [filesHaveChanged, setFilesHaveChanged] =
