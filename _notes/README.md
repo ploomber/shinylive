@@ -33,10 +33,10 @@ make serve-r
 ## Build
 
 ```sh
-make all
+make _shinylive-r
 ```
 
-Then grab `_shinylive/r/` or `site/` (unsure what's the difference)
+Then grab `_shinylive/r/`
 
 ```sh
 python -m http.server --directory _shinylive/r

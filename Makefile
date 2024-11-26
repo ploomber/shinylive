@@ -263,6 +263,11 @@ _shinylive:
 	$(MAKE) buildjs-prod-r
 	cp -Lr $(SITE_DIR)/. $(SHINYLIVE_DIR)/r
 
+# Build the _shinylive directory for deployment of the R site
+_shinylive-r:
+	$(MAKE) buildjs-prod-r
+	cp -Lr $(SITE_DIR)/. $(SHINYLIVE_DIR)/r
+
 # Build htmltools, shiny, and shinywidgets. This target must be run manually after
 # updating the package submodules; it will not run automatically with `make all`
 # because I'm not sure how to set up the dependencies reliably.
