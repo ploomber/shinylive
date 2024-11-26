@@ -386,9 +386,13 @@ export function App({
   }, [appMode, startFiles]);
 
   // Add message listener
-  // TODO: validate the origin of the message
   React.useEffect(() => {
     const handleMessage = async (event: MessageEvent) => {
+      if (event.origin !== process.env.APP_ORIGIN) {
+        console.warn("Received message from untrusted origin:", event.origin);
+        return;
+      }
+
       if (viewerMethods.ready) {
         if (event.data.type === 'files:write') {
           await viewerMethods.stopApp();

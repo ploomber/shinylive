@@ -94,6 +94,10 @@ function readdirSyncRecursive(dir: string, root: string = dir): string[] {
   }, []);
 }
 
+const envVarsToPass = {
+  APP_ORIGIN: process.env.APP_ORIGIN,
+}
+
 function buildSiteHtml(
   appEngine: AppEngine,
   googleTagManagerId: string | undefined,
@@ -156,6 +160,13 @@ const buildmap = {
       "process.env.NODE_ENV": reactProductionMode
         ? '"production"'
         : '"development"',
+      // Convert environment variables to JSON strings
+      ...Object.fromEntries(
+        Object.entries(envVarsToPass).map(([key, value]) => [
+          `process.env.${key}`,
+          JSON.stringify(value ?? ''),
+        ])
+      ),
     },
     loader: {
       ".svg": "dataurl",

@@ -21,6 +21,15 @@ I passed `showHeaderBar: false` to `app/index.html` but doesn't work because of 
 component works.
 
 
+## Development
+
+To spin a server with hot reload:
+
+```sh
+make serve-r
+```
+
+
 ## Build
 
 ```sh
@@ -32,3 +41,4 @@ Then grab `_shinylive/r/` or `site/` (unsure what's the difference)
 ```sh
 python -m http.server --directory _shinylive/r
 ```
+
