@@ -280,7 +280,7 @@ export function App({
       window.parent.postMessage({
         type: 'shiny:stderr',
         data: { message: msg }
-      }, '*');  // In production, replace '*' with specific origin
+      }, process.env.APP_ORIGIN || '/');
     }
   };
 
@@ -290,7 +290,7 @@ export function App({
       window.parent.postMessage({
         type: 'shiny:stdout',
         data: { message: msg }
-      }, '*');  // In production, replace '*' with specific origin
+      }, process.env.APP_ORIGIN || '/');
     }
   };
 
