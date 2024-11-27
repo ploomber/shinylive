@@ -278,7 +278,7 @@ export function App({
     // Send message to parent window
     if (window.parent !== window) {
       window.parent.postMessage({
-        type: 'shiny:error',
+        type: 'shiny:stderr',
         data: { message: msg }
       }, '*');  // In production, replace '*' with specific origin
     }
