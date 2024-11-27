@@ -283,7 +283,19 @@ export function App({
       }, '*');  // In production, replace '*' with specific origin
     }
   };
+
+  const handleEcho = async (msg: string): Promise<void> => {
+    // Send message to parent window
+    if (window.parent !== window) {
+      window.parent.postMessage({
+        type: 'shiny:stdout',
+        data: { message: msg }
+      }, '*');  // In production, replace '*' with specific origin
+    }
+  };
+
   terminalInterface.set_error_fn(handleError);
+  terminalInterface.set_echo_fn(handleEcho);
 
   const [currentFiles, setCurrentFiles] =
     React.useState<FileContent[]>(startFiles);
